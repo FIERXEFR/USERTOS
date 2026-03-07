@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — User Edition</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --white: #ffffff; --off-white: #f0f0f0; --light-gray: #c8c8c8;
+      --mid-gray: #888; --black: #000000;
+      --glass-bg: rgba(255,255,255,0.06); --glass-border: rgba(255,255,255,0.12);
+      --glass-hover: rgba(255,255,255,0.10);
+    }
+    html { scroll-behavior: smooth; }
+    body { background-color: #080808; color: var(--off-white); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.75; min-height: 100vh; overflow-x: hidden; }
+    .bg-grid { position: fixed; inset: 0; z-index: 0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
+    .bg-glow { position: fixed; inset: 0; z-index: 0; background: radial-gradient(ellipse 80% 60% at 15% 10%, rgba(255,255,255,0.04) 0%, transparent 70%), radial-gradient(ellipse 60% 50% at 85% 90%, rgba(255,255,255,0.03) 0%, transparent 70%); pointer-events: none; }
+    .wrapper { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 0 24px 80px; }
+
+    header { padding: 64px 0 48px; text-align: center; }
+    .header-badge { display: inline-block; font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mid-gray); border: 1px solid rgba(255,255,255,0.1); padding: 6px 18px; border-radius: 100px; margin-bottom: 12px; backdrop-filter: blur(8px); background: var(--glass-bg); text-shadow: 0 0 14px rgba(255,255,255,0.18); }
+    .header-audience { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #4edd80; border: 1px solid rgba(78,221,128,0.3); padding: 6px 18px; border-radius: 100px; margin-bottom: 12px; margin-left: 10px; background: rgba(78,221,128,0.08); box-shadow: 0 0 14px rgba(78,221,128,0.15); text-shadow: 0 0 10px rgba(78,221,128,0.5); }
+    .header-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(52px, 12vw, 96px); letter-spacing: 0.04em; line-height: 0.95; color: var(--white); margin-bottom: 8px; text-shadow: 0 0 40px rgba(255,255,255,0.55), 0 0 80px rgba(255,255,255,0.20), 0 0 120px rgba(255,255,255,0.08); }
+    .header-title span { display: block; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.25); text-shadow: none; filter: drop-shadow(0 0 18px rgba(255,255,255,0.18)); }
+    .header-subtitle { font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid-gray); margin-top: 20px; text-shadow: 0 0 18px rgba(255,255,255,0.12); }
+    .header-divider { width: 48px; height: 1px; background: rgba(255,255,255,0.15); margin: 32px auto 0; }
+
+    .meta-bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(16px); border-radius: 14px; padding: 16px 24px; margin-bottom: 40px; font-size: 12px; color: var(--mid-gray); letter-spacing: 0.08em; }
+    .meta-bar strong { color: var(--light-gray); font-weight: 500; text-shadow: 0 0 12px rgba(255,255,255,0.25); }
+    .meta-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--white); opacity: 0.4; display: inline-block; margin-right: 8px; vertical-align: middle; }
+
+    .toc-card { background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(20px); border-radius: 20px; padding: 28px 32px; margin-bottom: 40px; }
+    .toc-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid-gray); margin-bottom: 16px; font-weight: 500; }
+    .toc-list { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 6px 24px; }
+    .toc-list a { text-decoration: none; color: var(--light-gray); font-size: 13.5px; font-weight: 400; display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid transparent; transition: color 0.2s, border-color 0.2s; }
+    .toc-list a:hover { color: var(--white); border-color: rgba(255,255,255,0.1); text-shadow: 0 0 14px rgba(255,255,255,0.35); }
+    .toc-num { font-size: 10px; color: var(--mid-gray); font-weight: 500; min-width: 18px; }
+
+    .section { background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(20px); border-radius: 20px; padding: 32px 36px; margin-bottom: 20px; transition: background 0.3s, border-color 0.3s; overflow: hidden; }
+    .section:hover { background: var(--glass-hover); border-color: rgba(255,255,255,0.18); }
+    .section-header { display: flex; align-items: flex-start; gap: 18px; margin-bottom: 20px; }
+    .section-num { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 0.1em; color: var(--mid-gray); padding-top: 4px; min-width: 28px; flex-shrink: 0; text-shadow: 0 0 12px rgba(255,255,255,0.2); }
+    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(18px, 4vw, 26px); letter-spacing: 0.06em; color: var(--white); line-height: 1.15; text-shadow: 0 0 20px rgba(255,255,255,0.45), 0 0 50px rgba(255,255,255,0.12); word-break: break-word; flex: 1; }
+    .section-icon { font-size: 18px; opacity: 0.7; margin-left: auto; padding-top: 2px; flex-shrink: 0; }
+    .section-body { padding-left: 46px; font-size: 14px; color: var(--light-gray); line-height: 1.8; word-break: break-word; overflow-wrap: break-word; }
+    .section-body p { margin-bottom: 12px; }
+    .section-body strong { color: var(--white); font-weight: 600; text-shadow: 0 0 14px rgba(255,255,255,0.38), 0 0 30px rgba(255,255,255,0.10); }
+
+    .rule-list { list-style: none; margin-top: 4px; }
+    .rule-list li { display: flex; align-items: flex-start; gap: 14px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 14px; color: var(--light-gray); line-height: 1.7; word-break: break-word; }
+    .rule-list li > span:not(.rule-mark):not(.penalty-tag) { flex: 1; min-width: 0; }
+    .text-wrap { flex: 1; min-width: 0; display: block; }
+    .rule-list li:last-child { border-bottom: none; }
+    .rule-mark { min-width: 20px; width: 20px; height: 20px; border-radius: 50%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: center; font-size: 9px; color: var(--white); margin-top: 3px; flex-shrink: 0; }
+    .rule-mark.danger { background: rgba(255,80,80,0.1); border-color: rgba(255,80,80,0.25); color: #ff8080; }
+    .rule-mark.warn { background: rgba(255,200,60,0.08); border-color: rgba(255,200,60,0.2); color: #ffd060; }
+    .rule-mark.allowed { background: rgba(60,220,100,0.12); border: 1px solid rgba(60,220,100,0.30); color: #4edd80; box-shadow: 0 0 8px rgba(60,220,100,0.25); }
+
+    .penalty-tag { display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 9px; border-radius: 100px; margin-left: 6px; margin-top: 2px; vertical-align: middle; white-space: nowrap; line-height: 1.6; }
+    .tag-allowed { background: rgba(60,220,100,0.10); border: 1px solid rgba(60,220,100,0.28); color: #4edd80; box-shadow: 0 0 10px rgba(60,220,100,0.18); text-shadow: 0 0 10px rgba(60,220,100,0.5); }
+    .tag-temp { background: rgba(255,200,60,0.1); border: 1px solid rgba(255,200,60,0.25); color: #ffd060; }
+    .tag-perm { background: rgba(255,60,60,0.1); border: 1px solid rgba(255,60,60,0.25); color: #ff7070; }
+    .tag-info { background: rgba(100,160,255,0.1); border: 1px solid rgba(100,160,255,0.25); color: #80aaff; }
+
+    .highlight-box { background: rgba(255,255,255,0.04); border-left: 2px solid rgba(255,255,255,0.3); border-radius: 0 10px 10px 0; padding: 14px 18px; margin: 16px 0; font-size: 13.5px; color: var(--off-white); font-style: italic; text-shadow: 0 0 18px rgba(255,255,255,0.2); }
+    .highlight-box.warn-box { border-left-color: rgba(255,80,80,0.5); background: rgba(255,60,60,0.04); font-style: normal; }
+    .highlight-box.green-box { border-left-color: rgba(60,220,100,0.4); background: rgba(60,220,100,0.03); font-style: normal; }
+    .highlight-box.blue-box { border-left-color: rgba(100,160,255,0.4); background: rgba(100,160,255,0.03); font-style: normal; }
+
+    .contact-card { background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(20px); border-radius: 20px; padding: 32px 36px; margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; }
+    .contact-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid-gray); margin-bottom: 8px; font-weight: 500; }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 12px; }
+    .contact-link { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-size: 13.5px; font-weight: 500; color: var(--off-white); background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 100px; padding: 10px 20px; transition: background 0.2s, border-color 0.2s, color 0.2s; }
+    .contact-link:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.25); color: var(--white); text-shadow: 0 0 16px rgba(255,255,255,0.4); }
+
+    footer { text-align: center; padding: 40px 0 0; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.12em; color: rgba(255,255,255,0.15); margin-bottom: 12px; text-shadow: 0 0 24px rgba(255,255,255,0.12); }
+    .footer-text { font-size: 12px; color: var(--mid-gray); letter-spacing: 0.05em; }
+
+    .fade-in { opacity: 0; transform: translateY(22px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 600px) {
+      .section { padding: 20px 16px; } 
+      .section-body { padding-left: 0; }
+      .section-header { flex-wrap: wrap; gap: 10px; }
+      .contact-card { flex-direction: column; }
+      .toc-card { padding: 18px 16px; } 
+      header { padding: 44px 0 36px; }
+      .meta-bar { flex-direction: column; align-items: flex-start; }
+      .header-audience { margin-left: 0; margin-top: 8px; }
+      .penalty-tag { margin-left: 0; margin-top: 4px; display: inline-block; }
+      .wrapper { padding: 0 14px 60px; }
+      .highlight-box { padding: 12px 14px; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+<div class="bg-grid"></div><div class="bg-glow"></div>
+<div class="wrapper">
+
+  <header class="fade-in">
+    <div><span class="header-badge">Legal Document</span><span class="header-audience">For Users</span></div>
+    <div class="header-title">YOUR TOOL<span>User ToS</span></div>
+    <div class="header-subtitle">Terms of Service &amp; Usage Agreement — User Edition</div>
+    <div class="header-divider"></div>
+  </header>
+
+  <div class="meta-bar fade-in">
+    <div><span class="meta-dot"></span><strong>Effective Date:</strong>&nbsp; March 2025</div>
+    <div><strong>Platform:</strong>&nbsp; Android Only</div>
+    <div><strong>Powered by:</strong>&nbsp; FIERXE Tool Infrastructure</div>
+  </div>
+
+  <div class="toc-card fade-in">
+    <div class="toc-label">Table of Contents</div>
+    <ul class="toc-list">
+      <li><a href="#s1"><span class="toc-num">01</span> General Information</a></li>
+      <li><a href="#s2"><span class="toc-num">02</span> What This App Does</a></li>
+      <li><a href="#s3"><span class="toc-num">03</span> App Identity & Branding</a></li>
+      <li><a href="#s4"><span class="toc-num">04</span> Subscriptions, Keys & Login</a></li>
+      <li><a href="#s5"><span class="toc-num">05</span> User Responsibilities</a></li>
+      <li><a href="#s6"><span class="toc-num">06</span> Prohibited Actions</a></li>
+      <li><a href="#s7"><span class="toc-num">07</span> Service Availability</a></li>
+      <li><a href="#s8"><span class="toc-num">08</span> Disclaimer & Liability</a></li>
+      <li><a href="#s9"><span class="toc-num">09</span> Changes to Terms</a></li>
+      <li><a href="#s10"><span class="toc-num">10</span> Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- S1 -->
+  <div class="section fade-in" id="s1">
+    <div class="section-header"><div class="section-num">01</div><div class="section-title">General Information</div><div class="section-icon">📌</div></div>
+    <div class="section-body">
+      <p>This application is a rebranded version of a file modding tool for Android. It is distributed and operated independently by the admin of this app.</p>
+      <ul class="rule-list">
+        <li><span class="rule-mark">✦</span><span class="text-wrap">This application is designed and intended <strong>only for Android devices.</strong> iOS and all other platforms are not supported.</span></li>
+        <li><span class="rule-mark">✦</span><span class="text-wrap">By downloading, installing, or using this app, you <strong>fully agree</strong> to all terms stated in this document.</span></li>
+        <li><span class="rule-mark danger">✕</span><span class="text-wrap">If you do not agree to these terms, you must <strong>stop using the application immediately.</strong></span></li>
+        <li><span class="rule-mark">✦</span><span class="text-wrap">These terms may be updated at any time. Continued use of the app constitutes acceptance of the revised terms.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- S2 -->
+  <div class="section fade-in" id="s2">
+    <div class="section-header"><div class="section-num">02</div><div class="section-title">What This App Does</div><div class="section-icon">🛠️</div></div>
+    <div class="section-body">
+      <ul class="rule-list">
+        <li><span class="rule-mark allowed">✓</span><span class="text-wrap">This app is a <strong>file replacing and modding utility</strong> designed to improve game performance on Android devices. <span class="penalty-tag tag-allowed">✓ Permitted</span></span></li>
+        <li><span class="rule-mark allowed">✓</span><span class="text-wrap">This application is <strong>not malware, spyware, ransomware, or any form of malicious software.</strong> <span class="penalty-tag tag-allowed">✓ Safe</span></span></li>
+        <li><span class="rule-mark">✦</span><span class="text-wrap">No specific game names are referenced due to copyright considerations.</span></li>
+        <li><span class="rule-mark allowed">✓</span><span class="text-wrap">The tool performs <strong>only file replacement operations</strong> as explicitly designed. <span class="penalty-tag tag-allowed">✓ Scoped</span></span></li>
+      </ul>
+      <div class="highlight-box">
+        "This tool performs file-level operations to enhance performance. It does not collect personal data, inject malicious code, or interact with systems beyond its defined scope."
+      </div>
+    </div>
+  </div>
+
+  <!-- S3: Branding -->
+  <div class="section fade-in" id="s3">
+    <div class="section-header"><div class="section-num">03</div><div class="section-title">App Identity &amp; Branding</div><div class="section-icon">🏷️</div></div>
+    <div class="section-body">
+      <p>This is a rebranded application. Users must understand the following about how this app is identified and supported:</p>
+      <ul class="rule-list">
+        <li><span class="rule-mark">✦</span><span class="text-wrap">After rebranding, this application is known <strong>exclusively by the name given by your admin.</strong> The original project name is not associated with your version.</span></li>
+        <li><span class="rule-mark">✦</span><span class="text-wrap">In any situation — including in-game bans, technical issues, or disputes — users must <strong>refer to and contact their admin</strong> and their app's name, not any other project name.</span></li>
+        <li><span class="rule-mark danger">✕</span><span class="text-wrap">Do <strong>not target, blame, or reference</strong> any other rebranded app or any other project name in the event of a personal issue with your app.</span></li>
+        <li><span class="rule-mark">✦</span><span class="text-wrap">Each rebranded app operates <strong>independently.</strong> Issues with your app have no bearing on other versions or other admins.</span></li>
+        <li><span class="rule-mark warn">!</span><span class="text-wrap">Other admins may provide different files and content. <strong>Your experience is specific to your admin's version only.</strong></span></li>
+      </ul>
+      <div class="highlight-box blue-box">
+        ℹ️ If you face any issue — including an in-game ban — your point of contact is your app's admin, not any other app or project. Each app is independent and operates under its own admin's responsibility.
+      </div>
+    </div>
+  </div>
+
+  <!-- S4: Subscriptions, Keys & Login -->
+  <div class="section fade-in" id="s4">
+    <div class="section-header"><div class="section-num">04</div><div class="section-title">Subscriptions, Keys &amp; Login</div><div class="section-icon">🔑</div></div>
+    <div class="section-body">
+      <p>All subscription keys and login access are subject to the following terms. Please read carefully before purchasing.</p>
+      <ul class="rule-list">
+        <li><span class="rule-mark danger">✕</span><span class="text-wrap"><strong>All key sales are final. No refunds will be issued</strong> under any circumstances once a key has been sold or activated.</span></li>
+        <li><span class="rule-mark danger">✕</span><span class="text-wrap"><strong>No refund will be issued</strong> if your in-game account gets banned as a result of using this tool.</span></li>
+        <li><span class="rule-mark danger">✕</span><span class="text-wrap"><strong>No refund will be issued</strong> for any other reason, including dissatisfaction, accidental purchase, or device change.</span></li>
+        <li><span class="rule-mark warn">!</span><span class="text-wrap">Each key is valid for <strong>one device only.</strong> A key cannot be transferred, shared, or used on multiple devices simultaneously.</span></li>
+        <li><span class="rule-mark warn">!</span><span class="text-wrap">If your device changes, <strong>contact your admin</strong> to discuss transfer options. This is at the admin's sole discretion.</span></li>
+        <li><span class="rule-mark allowed">✓</span><span class="text-wrap">In the event of <strong>scheduled maintenance or server downtime,</strong> key time will be <strong>adjusted accordingly</strong> so you do not lose active subscription time. <span class="penalty-tag tag-allowed">✓ Fair Policy</span></span></li>
+        <li><span class="rule-mark">✦</span><span class="text-wrap">For any subscription-related issues — key not working, login problems, or account queries — <strong>contact your admin directly.</strong> The underlying tool infrastructure team does not handle individual user support.</span></li>
+        <li><span class="rule-mark danger">✕</span><span class="text-wrap"><strong>Do not share your login credentials</strong> with anyone. You are solely responsible for the security of your account.</span></li>
+        <li><span class="rule-mark danger">✕</span><span class="text-wrap">Sharing, reselling, or redistributing your key or login is <strong>strictly prohibited</strong> and may result in immediate deactivation without refund.</span></li>
+      </ul>
+      <div class="highlight-box warn-box">
+        ⚠️ Once a key is purchased, it is non-refundable under all circumstances — including device bans, in-game bans, or change of mind. Make sure you understand the tool's purpose before purchasing.
+      </div>
+      <div class="highlight-box green-box">
+        ✅ During maintenance periods, your remaining key time will not be wasted. Active subscription time is preserved and adjusted accordingly.
+      </div>
+    </div>
+  </div>
+
+  <!-- S5: Responsibilities -->
+  <div class="section fade-in" id="s5">
+    <div class="section-header"><div class="section-num">05</div><div class="section-title">User Responsibilities</div><div class="section-icon">🙋</div></div>
+    <div class="section-body">
+      <ul class="rule-list">
+        <li><span class="rule-mark allowed">✓</span><span class="text-wrap">Use the app <strong>only for its intended purpose</strong> — file replacement to improve game performance. <span class="penalty-tag tag-allowed">✓ Allowed</span></span></li>
+        <li><span class="rule-mark allowed">✓</span><span class="text-wrap">Follow all instructions and updates from <strong>your admin's official channels.</strong> <span class="penalty-tag tag-allowed">✓ Recommended</span></span></li>
+        <li><span class="rule-mark danger">✕</span><span class="text-wrap">Do not attempt to <strong>reverse engineer, tamper with, or exploit</strong> the application.</span></li>
+        <li><span class="rule-mark danger">✕</span><span class="text-wrap">Do not <strong>redistribute, resell, or share</strong> the application or any of its files without authorization.</span></li>
+        <li><span class="rule-mark danger">✕</span><span class="text-wrap">Do not use the app for any <strong>illegal or unauthorized</strong> purpose.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- S6: Prohibited -->
+  <div class="section fade-in" id="s6">
+    <div class="section-header"><div class="section-num">06</div><div class="section-title">Prohibited Actions</div><div class="section-icon">🚫</div></div>
+    <div class="section-body">
+      <ul class="rule-list">
+        <li><span class="rule-mark danger">✕</span><span class="text-wrap">Claiming to have <strong>built, developed, or created</strong> this application or any version of it.</span></li>
+        <li><span class="rule-mark danger">✕</span><span class="text-wrap"><strong>Reverse engineering, decompiling, or tampering</strong> with the application in any form.</span></li>
+        <li><span class="rule-mark danger">✕</span><span class="text-wrap">Using the application for any <strong>illegal, unauthorized, or malicious</strong> purpose.</span></li>
+        <li><span class="rule-mark danger">✕</span><span class="text-wrap"><strong>Distributing or reselling</strong> the application without explicit authorization.</span></li>
+        <li><span class="rule-mark danger">✕</span><span class="text-wrap"><strong>Disrespecting, threatening, or harassing</strong> your admin or any member of the support team.</span></li>
+        <li><span class="rule-mark danger">✕</span><span class="text-wrap">Sharing or reselling your <strong>subscription key or login credentials.</strong></span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- S7: Service Availability -->
+  <div class="section fade-in" id="s7">
+    <div class="section-header"><div class="section-num">07</div><div class="section-title">Service Availability</div><div class="section-icon">🌐</div></div>
+    <div class="section-body">
+      <ul class="rule-list">
+        <li><span class="rule-mark">✦</span><span class="text-wrap">The server may be <strong>shut down or restricted</strong> at any time for maintenance, testing, or bug fixes without prior notice.</span></li>
+        <li><span class="rule-mark">✦</span><span class="text-wrap">The app may contain <strong>broadcast messages or update notifications</strong> sent by the admin or infrastructure team.</span></li>
+        <li><span class="rule-mark">✦</span><span class="text-wrap">The app may contain <strong>links or promotional content</strong> related to updates, added at any time.</span></li>
+        <li><span class="rule-mark warn">!</span><span class="text-wrap"><strong>No compensation or refund</strong> is provided for downtime, except key time adjustments during maintenance as outlined in Section 04.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- S8: Disclaimer -->
+  <div class="section fade-in" id="s8">
+    <div class="section-header"><div class="section-num">08</div><div class="section-title">Disclaimer &amp; Liability</div><div class="section-icon">🔒</div></div>
+    <div class="section-body">
+      <ul class="rule-list">
+        <li><span class="rule-mark">✦</span><span class="text-wrap">This application is provided <strong>"as is"</strong> without warranties of any kind.</span></li>
+        <li><span class="rule-mark danger">✕</span><span class="text-wrap"><strong>Neither the admin nor the underlying tool infrastructure</strong> is responsible for any damage, data loss, or device issues resulting from use of this application.</span></li>
+        <li><span class="rule-mark danger">✕</span><span class="text-wrap"><strong>No party is responsible for in-game account bans.</strong> Use of this tool carries inherent risk, and all users accept full responsibility.</span></li>
+        <li><span class="rule-mark danger">✕</span><span class="text-wrap"><strong>No refund will be issued</strong> if your account is banned in-game as a result of using this tool.</span></li>
+        <li><span class="rule-mark warn">!</span><span class="text-wrap">If your admin individually guaranteed "no account ban" — that claim is <strong>solely your admin's personal responsibility.</strong> Contact your admin directly for such claims.</span></li>
+        <li><span class="rule-mark">✦</span><span class="text-wrap">Users operate this tool <strong>entirely at their own risk.</strong></span></li>
+      </ul>
+      <div class="highlight-box warn-box">
+        ⚠️ Using this tool may result in in-game account action. No refunds will be issued for bans. If your admin made a personal no-ban guarantee, that is between you and your admin only.
+      </div>
+    </div>
+  </div>
+
+  <!-- S9: Changes -->
+  <div class="section fade-in" id="s9">
+    <div class="section-header"><div class="section-num">09</div><div class="section-title">Changes to Terms</div><div class="section-icon">📢</div></div>
+    <div class="section-body">
+      <ul class="rule-list">
+        <li><span class="rule-mark">✦</span><span class="text-wrap">These Terms may be <strong>updated or modified</strong> at any time without prior notice.</span></li>
+        <li><span class="rule-mark">✦</span><span class="text-wrap">Continued use of the app after changes constitutes <strong>full acceptance</strong> of the revised Terms.</span></li>
+        <li><span class="rule-mark">✦</span><span class="text-wrap">Stay updated through <strong>your admin's official communication channels.</strong></span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- S10: Contact -->
+  <div class="contact-card fade-in" id="s10">
+    <div>
+      <div class="contact-label">10 — Official Contact</div>
+      <div style="font-size:13px; color: var(--mid-gray); max-width: 340px; line-height:1.6;">For all support, subscription issues, or disputes — contact your admin through their official channels. For infrastructure-level concerns:</div>
+    </div>
+    <div class="contact-links">
+      <a class="contact-link" href="https://t.me/FI3RX3" target="_blank">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        @FI3RX3
+      </a>
+      <a class="contact-link" href="https://t.me/FIERXEE" target="_blank">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        @FIERXEE
+      </a>
+    </div>
+  </div>
+
+  <footer class="fade-in">
+    <div class="footer-logo">FIERXE TOOL</div>
+    <div class="footer-text">© 2025 FIERXE Infrastructure. All Rights Reserved. &nbsp;·&nbsp; Android Only &nbsp;·&nbsp; User Edition</div>
+  </footer>
+</div>
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 60); observer.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
